@@ -12,8 +12,8 @@ export default function FormDialog(props) {
   const [editValues, setEditValues] = useState({
     id: props.id,
     name: props.title,
-    cost: props.cost,
-    category: props.category,
+    email: props.email,
+    tel: props.tel,
   });
 
   const handleChangeValues = (values) => {
@@ -31,8 +31,8 @@ export default function FormDialog(props) {
     Axios.put("http://localhost:3001/edit", {
       id: editValues.id,
       name: editValues.name,
-      cost: editValues.cost,
-      category: editValues.category,
+      email: editValues.email,
+      tel: editValues.tel,
     }).then(() => {
       props.setListCard(
         props.listCard.map((value) => {
@@ -40,8 +40,8 @@ export default function FormDialog(props) {
             ? {
                 id: editValues.id,
                 name: editValues.name,
-                cost: editValues.cost,
-                category: editValues.category,
+                email: editValues.email,
+                tel: editValues.tel,
               }
             : value;
         })
@@ -92,9 +92,9 @@ export default function FormDialog(props) {
           <TextField
             autoFocus
             margin="dense"
-            id="cost"
+            id="email"
             label="email"
-            defaultValue={props.cost}
+            defaultValue={props.email}
             type="text"
             onChange={handleChangeValues}
             fullWidth
@@ -102,9 +102,9 @@ export default function FormDialog(props) {
           <TextField
             autoFocus
             margin="dense"
-            id="category"
+            id="tel"
             label="Telefone"
-            defaultValue={props.category}
+            defaultValue={props.tel}
             type="number"
             onChange={handleChangeValues}
             fullWidth
